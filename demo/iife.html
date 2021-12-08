@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iife</title>
+</head>
+
+<body>
+  <script src="../dist/mlibs.js"></script>
+  <script>
+    const { isQQ, getType } = window.Mlibs;
+
+    console.log('window.Mlibs ->', window.Mlibs);
+
+
+    console.log('\n---- 校验数据类型 ----');
+    console.log("getType(null) ->", getType(null));
+    console.log("getType(undefined) ->", getType(undefined));
+
+    console.log("getType('hello') ->", getType('hello'));
+    console.log("getType(1234) ->", getType(1234));
+    console.log("getType(true) ->", getType(true));
+    console.log("getType(Symbol()) ->", getType(Symbol()));
+
+    console.log("getType({}) ->", getType({}));
+    console.log("getType([]) ->", getType([]));
+    console.log("getType(() => {}) ->", getType(() => { }));
+
+
+    console.log('\n---- 校验是否是QQ号码 ----');
+    console.log('isQQ(2323333339) ->', isQQ('2323333339'));
+    console.log('isQQ(1234) ->', isQQ('1234'));
+
+  </script>
+</body>
+
+</html>
