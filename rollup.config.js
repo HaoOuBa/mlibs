@@ -8,7 +8,7 @@ import pkg from './package.json';
 // 插件列表
 const plugins = [resolve(), commonjs(), typescript()];
 // 生产环境加入代码压缩功能
-if (process.env.NODE_ENV === 'production') plugins.push(terser({ compress: { drop_console: true } }));
+if (process.env.NODE_ENV === 'production') plugins.push(terser());
 
 export default [
   // UMD规范

@@ -9,31 +9,26 @@
 </head>
 
 <body>
+  <input type="file" id="file">
+
   <script src="../dist/mlibs.js"></script>
   <script>
-    const { isQQ, getType } = window.Mlibs;
+    const { isQQ, getType, compressImage } = window.Mlibs;
 
     console.log('window.Mlibs ->', window.Mlibs);
 
-
-    console.log('\n---- 校验数据类型 ----');
-    console.log("getType(null) ->", getType(null));
-    console.log("getType(undefined) ->", getType(undefined));
-
-    console.log("getType('hello') ->", getType('hello'));
-    console.log("getType(1234) ->", getType(1234));
-    console.log("getType(true) ->", getType(true));
-    console.log("getType(Symbol()) ->", getType(Symbol()));
-
-    console.log("getType({}) ->", getType({}));
-    console.log("getType([]) ->", getType([]));
-    console.log("getType(() => {}) ->", getType(() => { }));
-
-
-    console.log('\n---- 校验是否是QQ号码 ----');
-    console.log('isQQ(2323333339) ->', isQQ('2323333339'));
-    console.log('isQQ(1234) ->', isQQ('1234'));
-
+    console.log('\n---- 压缩图片 ----');
+    file.addEventListener('change', e => {
+      console.log('压缩前大小 ->', e.target.files[0].size);
+      compressImage(e.target.files[0], 0.1).then(res => {
+        var reader = new FileReader();
+        reader.readAsDataURL(res);
+        reader.onload = function (e) {
+          console.log(e.target.result);
+          console.log('压缩后大小 ->', res.size);
+        }
+      })
+    })
   </script>
 </body>
 
